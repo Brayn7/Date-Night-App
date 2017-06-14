@@ -1,0 +1,25 @@
+$bgColor: #db5f4a; 
+$titleColor: #374a5c;
+
+
+#nav {
+   background: $bgColor;
+}
+
+#nav a {
+   color: $titleColor;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+#logo {
+   text-align: center;
+   padding: 20px 0;
+}
+
+#logo i {
+   font-size: .98em;
+   color: #ea9f33;
+   margin: 0 5px 1.5px;
+   vertical-align: bottom;
+}

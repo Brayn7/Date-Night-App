@@ -1,4 +1,6 @@
 import navbarComponent from './navbar.component'; 
 
-angular.module('navbar',[])
-.component ('narbar', navbarComponent)
+let navbarModule = angular.module('navbar',[])
+.component('navbar', navbarComponent)
+
+export default  navbarModule;
