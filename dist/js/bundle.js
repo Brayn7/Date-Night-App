@@ -41,7 +41,7 @@ var appController = function appController() {
 exports.default = appController;
 
 },{}],3:[function(require,module,exports){
-module.exports = "<navbar class=\"row\"></navbar>";
+module.exports = "<navbar class=\"row\"></navbar>\n<events class=\"row\"></events>";
 
 },{}],4:[function(require,module,exports){
 'use strict';
@@ -54,11 +54,61 @@ var _navbar = require('./components/navbar/navbar.component');
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
+var _events = require('./components/events/events.component');
+
+var _events2 = _interopRequireDefault(_events);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-angular.module('app', []).component('app', _app2.default).component('navbar', _navbar2.default);
+angular.module('app', []).component('app', _app2.default).component('navbar', _navbar2.default).component('events', _events2.default);
 
-},{"./app.component":1,"./components/navbar/navbar.component":5}],5:[function(require,module,exports){
+},{"./app.component":1,"./components/events/events.component":5,"./components/navbar/navbar.component":8}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+var _events = require('./events.html');
+
+var _events2 = _interopRequireDefault(_events);
+
+var _events3 = require('./events.controller');
+
+var _events4 = _interopRequireDefault(_events3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var eventsComponent = {
+   bindings: {},
+   template: _events2.default,
+   controller: _events4.default,
+   controllerAs: '$ctrl'
+};
+
+exports.default = eventsComponent;
+
+},{"./events.controller":6,"./events.html":7}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var eventsController = function eventsController() {
+   _classCallCheck(this, eventsController);
+
+   var ctrl = this;
+};
+
+exports.default = eventsController;
+
+},{}],7:[function(require,module,exports){
+module.exports = "<h1>hello form events</h1>\n";
+
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -84,7 +134,7 @@ var navbarComponent = {
 
 exports.default = navbarComponent;
 
-},{"./navbar.controller":6,"./navbar.html":7}],6:[function(require,module,exports){
+},{"./navbar.controller":9,"./navbar.html":10}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -101,7 +151,7 @@ var navbarController = function navbarController() {
 
 exports.default = navbarController;
 
-},{}],7:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = "<div id=\"nav\" class=\"col\">\n  <a href=\"#\"><h1 id=\"logo\" class=\"title\">Date<i class=\"fa fa-heart\" aria-hidden=\"true\"></i>night</h1></div></a>\n</div>";
 
 },{}]},{},[4]);
