@@ -4,6 +4,7 @@ import foodComponent from './components/food/food.component';
 import randomComponent from './components/random/random.component'
 import moviesComponent from './components/movies/movies.component';
 import eventsComponent from './components/events/events.component';
+import modalComponent from './components/modal/modal.component'
 
 
 angular.module('app', [])
@@ -13,4 +14,5 @@ angular.module('app', [])
    .component('events', eventsComponent)
    .component('movies', moviesComponent)
    .component('random', randomComponent)
+   .component('modal', modalComponent)
 
