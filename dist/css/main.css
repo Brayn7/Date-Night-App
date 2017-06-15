@@ -1,18 +1,53 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:700");
-.title {
-  font-family: "Oswald", sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:900");
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden; }
+
+.title, h1 {
+  font-size: 2.4em;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase; }
 
+#food, #movies, #random, #events {
+  height: 20.1vh;
+  display: table; }
 
+.category a {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center; }
 
+.category i {
+  color: #374a5c;
+  font-size: 2.75em;
+  margin-right: .2em; }
+
+.category h1 {
+  color: white;
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 2.75em;
+  vertical-align: sub;
+  letter-spacing: 2px; }
+
+#events {
+  background: #58ac96; }
+
+#food {
+  background: #ea9f33; }
 
 #nav {
-  background: #db5f4a; }
+  background: #db5f4a;
+  height: 20vh;
+  display: table; }
 
 #nav a {
   color: #374a5c;
   cursor: pointer;
-  text-decoration: none; }
+  text-decoration: none;
+  display: table-cell;
+  vertical-align: middle; }
 
 #logo {
   text-align: center;
@@ -24,3 +59,14 @@
   margin: 0 5px 1.5px;
   vertical-align: bottom; }
 
+#movies {
+  background: #3b82b8; }
+
+#movies .fa-ticket {
+  font-size: 3.4em; }
+
+#random {
+  background: #374a5c; }
+
+#random i {
+  color: white; }

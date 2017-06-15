@@ -1,15 +1,19 @@
-$bgColor: #db5f4a; 
 $titleColor: #374a5c;
+$bgColor: #db5f4a;
 
 
 #nav {
    background: $bgColor;
+   height: 20vh;
+   display: table;
 }
 
 #nav a {
    color: $titleColor;
    cursor: pointer;
    text-decoration: none;
+   display: table-cell;
+   vertical-align: middle;
 }
 
 #logo {

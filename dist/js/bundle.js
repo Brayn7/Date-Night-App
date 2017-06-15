@@ -41,7 +41,7 @@ var appController = function appController() {
 exports.default = appController;
 
 },{}],3:[function(require,module,exports){
-module.exports = "<navbar class=\"row\"></navbar>\n<food class=\"row\" ></food>\n<random class=\"row\" ></random>";
+module.exports = "<navbar class=\"row\"></navbar>\n<food class=\"row category\" ></food>\n<events class=\"row category\"></events>\n<movies class=\"row category\"></movies>\n<random class=\"row category\" ></random>\n\n";
 
 },{}],4:[function(require,module,exports){
 'use strict';
@@ -62,11 +62,65 @@ var _random = require('./components/random/random.component');
 
 var _random2 = _interopRequireDefault(_random);
 
+var _movies = require('./components/movies/movies.component');
+
+var _movies2 = _interopRequireDefault(_movies);
+
+var _events = require('./components/events/events.component');
+
+var _events2 = _interopRequireDefault(_events);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-angular.module('app', []).component('app', _app2.default).component('navbar', _navbar2.default).component('food', _food2.default).component('random', _random2.default);
+angular.module('app', []).component('app', _app2.default).component('navbar', _navbar2.default).component('food', _food2.default).component('events', _events2.default).component('movies', _movies2.default).component('random', _random2.default);
 
-},{"./app.component":1,"./components/food/food.component":5,"./components/navbar/navbar.component":8,"./components/random/random.component":11}],5:[function(require,module,exports){
+},{"./app.component":1,"./components/events/events.component":5,"./components/food/food.component":8,"./components/movies/movies.component":11,"./components/navbar/navbar.component":14,"./components/random/random.component":17}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+var _events = require('./events.html');
+
+var _events2 = _interopRequireDefault(_events);
+
+var _events3 = require('./events.controller');
+
+var _events4 = _interopRequireDefault(_events3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var eventsComponent = {
+   bindings: {},
+   template: _events2.default,
+   controller: _events4.default,
+   controllerAs: '$ctrl'
+};
+
+exports.default = eventsComponent;
+
+},{"./events.controller":6,"./events.html":7}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var eventsController = function eventsController() {
+   _classCallCheck(this, eventsController);
+
+   var ctrl = this;
+};
+
+exports.default = eventsController;
+
+},{}],7:[function(require,module,exports){
+module.exports = "<div id=\"events\" class=\"col\">\n  <a href=\"#\">\n    <i class=\"fa fa-calendar\" aria-hidden=\"true\"></i>\n    <h1>Events</h1>\n  </a>\n</div>";
+
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -92,7 +146,7 @@ var foodComponent = {
 
 exports.default = foodComponent;
 
-},{"./food.controller":6,"./food.html":7}],6:[function(require,module,exports){
+},{"./food.controller":9,"./food.html":10}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -109,10 +163,56 @@ var foodController = function foodController() {
 
 exports.default = foodController;
 
-},{}],7:[function(require,module,exports){
-module.exports = "<h1>Hello from Food</h1>";
+},{}],10:[function(require,module,exports){
+module.exports = "<div id=\"food\" class=\"col\">\n  <a href=\"#\">\n    <i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i>\n    <h1>Food</h1>\n  </a>\n</div>";
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+var _movies = require('./movies.html');
+
+var _movies2 = _interopRequireDefault(_movies);
+
+var _movies3 = require('./movies.controller');
+
+var _movies4 = _interopRequireDefault(_movies3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var moviesComponent = {
+   bindings: {},
+   template: _movies2.default,
+   controller: _movies4.default,
+   controllerAs: '$ctrl'
+};
+
+exports.default = moviesComponent;
+
+},{"./movies.controller":12,"./movies.html":13}],12:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var moviesController = function moviesController() {
+   _classCallCheck(this, moviesController);
+
+   var ctrl = this;
+};
+
+exports.default = moviesController;
+
+},{}],13:[function(require,module,exports){
+module.exports = "<div id=\"movies\" class=\"col\">\n  <a href=\"#\">\n    <i class=\"fa fa-ticket\" aria-hidden=\"true\"></i>\n    <h1>Movies</h1>\n  </a>\n</div>";
+
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -138,7 +238,7 @@ var navbarComponent = {
 
 exports.default = navbarComponent;
 
-},{"./navbar.controller":9,"./navbar.html":10}],9:[function(require,module,exports){
+},{"./navbar.controller":15,"./navbar.html":16}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -155,10 +255,10 @@ var navbarController = function navbarController() {
 
 exports.default = navbarController;
 
-},{}],10:[function(require,module,exports){
-module.exports = "<div id=\"nav\" class=\"col\">\n  <a href=\"#\"><h1 id=\"logo\" class=\"title\">Date<i class=\"fa fa-heart\" aria-hidden=\"true\"></i>night</h1></div></a>\n</div>";
+},{}],16:[function(require,module,exports){
+module.exports = "<div id=\"nav\" class=\"col\">\n  <a id=\"logo\" href=\"#\">\n    <h1 class=\"title\">Date<i class=\"fa fa-heart\" aria-hidden=\"true\"></i>night\n    </h1>\n    </a>\n</div>";
 
-},{}],11:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -184,7 +284,7 @@ var randomComponent = {
 
 exports.default = randomComponent;
 
-},{"./random.controller":12,"./random.html":13}],12:[function(require,module,exports){
+},{"./random.controller":18,"./random.html":19}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -201,7 +301,7 @@ var randomController = function randomController() {
 
 exports.default = randomController;
 
-},{}],13:[function(require,module,exports){
-module.exports = "<h1>Hello from random</h1>";
+},{}],19:[function(require,module,exports){
+module.exports = "<div id=\"random\" class=\"col\">\n  <a href=\"#\">\n    <i class=\"fa fa-question-circle\" aria-hidden=\"true\"></i>\n    <h1>Random</h1>\n  </a>\n</div>";
 
 },{}]},{},[4]);
