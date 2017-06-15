@@ -4,7 +4,7 @@ import controller from './modal.controller';
 let modalComponent = {
    bindings: {},
    template,
-   controller,
+   controller: ['$rootScope', controller],
    controllerAs: '$ctrl'
 }
 

@@ -4,7 +4,7 @@ import controller from './food.controller';
 let foodComponent = {
 	bindings: {},
 	template, 
-	controller,
+	controller: ['$rootScope', controller],
 	controllerAs: '$ctrl'
 }
 

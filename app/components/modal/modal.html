@@ -4,7 +4,7 @@
     <div class="modal-dialog d-table-cell align-middle" role="document">
       <div class="modal-content py-5">
         <div class="modal-body text-center">
-          <input class="form-text w-75 d-inline-block my-4" type="number" placeholder="enter zipcode...">
+          <input class="form-text w-75 d-inline-block my-4" type="number"  ng-model="$ctrl.zipcode"  placeholder="enter zipcode...">
           
           <div id="radioArea" class="my-3">
             <p>area in miles</p>
@@ -25,7 +25,7 @@
           </label>
           </div>
           
-          <button id="zipbtn" type="button" class="btn w-50">Go</button>
+          <button  ng-click="$ctrl.zipSubmit()" id="zipbtn" type="button" class="btn w-50">Go</button>
         </div>
       </div>
     </div>
