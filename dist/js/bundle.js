@@ -157,24 +157,55 @@ exports.default = foodComponent;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+   value: true
 });
+
+var _env = require('../../../dist/env.json');
+
+var _env2 = _interopRequireDefault(_env);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var foodController = function foodController($rootScope) {
-	_classCallCheck(this, foodController);
+   _classCallCheck(this, foodController);
 
-	var ctrl = this;
-	ctrl.$rootScope = $rootScope;
-	ctrl.$rootScope.$watch('zipcode', function () {
-		ctrl.zipcode = ctrl.$rootScope.zipcode;
-	});
+   var ctrl = this;
+   // $rootscope vars
+   ctrl.$rootScope = $rootScope;
+
+   ctrl.$rootScope.$watch('zipcode', function () {
+      ctrl.zipcode = ctrl.$rootScope.zipcode;
+      ctrl.call(ctrl.zipcode, _env2.default.DB_USER, _env2.default.DB_PASS);
+   });
+
+   // local vars
+   ctrl.restaurants;
+
+   // ajax call to foursquare
+   ctrl.call = function (zip, user, pass) {
+      $.ajax({
+         url: 'https://api.foursquare.com/v2/venues/explore?near=' + zip + '&radius=800&query=food&client_id=' + user + '&client_secret=' + pass + '&v=20170616',
+         type: 'GET',
+         dataType: 'json',
+         data: { param1: 'value1' }
+      }).done(function () {
+         console.log("success");
+      }).fail(function () {
+         console.log("error");
+      }).always(function (response) {
+         console.log(response.response.groups[0].items);
+      }).then(function (res) {
+         ctrl.restaurants = res.response.groups[0].items;
+         console.log(ctrl.restaurants);
+      });
+   };
 };
 
 exports.default = foodController;
 
-},{}],10:[function(require,module,exports){
+},{"../../../dist/env.json":23}],10:[function(require,module,exports){
 module.exports = "<div id=\"food\" class=\"col\">\n  <a href=\"#\">\n    <i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i>\n    <h1>Food</h1>\n  </a>\n</div>";
 
 },{}],11:[function(require,module,exports){
@@ -241,7 +272,7 @@ var modalController = function () {
 exports.default = modalController;
 
 },{}],13:[function(require,module,exports){
-module.exports = "<!-- Modal -->\n<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"false\">\n  <div class=\"col-xs-12 col-md-6 w-100 h-100 d-table mx-auto\">\n    <div class=\"modal-dialog d-table-cell align-middle\" role=\"document\">\n      <div class=\"modal-content py-5\">\n        <div class=\"modal-body text-center\">\n          <input class=\"form-text w-75 d-inline-block my-4\" type=\"number\"  ng-model=\"$ctrl.zipcode\"  placeholder=\"enter zipcode...\">\n          \n          <div id=\"radioArea\" class=\"my-3\">\n            <p>area in miles</p>\n            <label class=\"custom-control custom-radio\">\n            <input id=\"radio1\" name=\"radio\" type=\"radio\" class=\"custom-control-input\">\n            <span class=\"custom-control-indicator\"></span>\n            <span class=\"custom-control-description\">10</span>\n          </label>\n          <label class=\"custom-control custom-radio\">\n            <input id=\"radio2\" name=\"radio\" type=\"radio\" class=\"custom-control-input\">\n            <span class=\"custom-control-indicator\"></span>\n            <span class=\"custom-control-description\">20</span>\n          </label>\n          <label class=\"custom-control custom-radio\">\n            <input id=\"radio2\" name=\"radio\" type=\"radio\" class=\"custom-control-input\">\n            <span class=\"custom-control-indicator\"></span>\n            <span class=\"custom-control-description\">30</span>\n          </label>\n          </div>\n          \n          <button  ng-click=\"$ctrl.zipSubmit()\" id=\"zipbtn\" type=\"button\" class=\"btn w-50\">Go</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<!-- Modal -->\n<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"false\">\n  <div class=\"col-xs-12 col-lg-6 w-100 h-100 d-table mx-auto\">\n    <div class=\"modal-dialog d-table-cell align-middle\" role=\"document\">\n      <div class=\"modal-content py-5\">\n        <div class=\"modal-body text-center\">\n          <input class=\"form-text w-75 d-inline-block my-4\" type=\"number\"  ng-model=\"$ctrl.zipcode\"  placeholder=\"enter zipcode...\">\n          \n          <div id=\"radioArea\" class=\"my-3\">\n            <p>area in miles</p>\n            <label class=\"custom-control custom-radio\">\n            <input id=\"radio1\" name=\"radio\" type=\"radio\" class=\"custom-control-input\">\n            <span class=\"custom-control-indicator\"></span>\n            <span class=\"custom-control-description\">10</span>\n          </label>\n          <label class=\"custom-control custom-radio\">\n            <input id=\"radio2\" name=\"radio\" type=\"radio\" class=\"custom-control-input\">\n            <span class=\"custom-control-indicator\"></span>\n            <span class=\"custom-control-description\">20</span>\n          </label>\n          <label class=\"custom-control custom-radio\">\n            <input id=\"radio2\" name=\"radio\" type=\"radio\" class=\"custom-control-input\">\n            <span class=\"custom-control-indicator\"></span>\n            <span class=\"custom-control-description\">30</span>\n          </label>\n          </div>\n          \n          <button  ng-click=\"$ctrl.zipSubmit()\" id=\"zipbtn\" type=\"button\" class=\"btn w-50\">Go</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 },{}],14:[function(require,module,exports){
 'use strict';
@@ -381,4 +412,6 @@ exports.default = randomController;
 },{}],22:[function(require,module,exports){
 module.exports = "<div id=\"random\" class=\"col\">\n  <a href=\"#\">\n    <i class=\"fa fa-question-circle\" aria-hidden=\"true\"></i>\n    <h1>Random</h1>\n  </a>\n</div>";
 
+},{}],23:[function(require,module,exports){
+module.exports={"DB_HOST":"localhost:8080","DB_USER":"XREC15SHUPY4ANST21YDIMS0J2K1PJYDRCWQZQB1UENMYQ2G","DB_PASS":"I2D0Y31GC4EKPKZ4RIAKKT3MA13QFPS4YSKA3PCSZU0U0XGL"}
 },{}]},{},[4]);

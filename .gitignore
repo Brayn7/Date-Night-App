@@ -1,2 +1,4 @@
 node_modules
 dist/js/bundle.js
+.env
+dist/env.json

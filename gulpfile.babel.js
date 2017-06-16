@@ -8,6 +8,8 @@ import source from 'vinyl-source-stream';
 import sass from 'gulp-sass'; 
 import autoprefixer from 'gulp-autoprefixer'; 
 import concat from 'gulp-concat';
+import rename from 'gulp-rename';
+import dotenv from 'gulp-dotenv';
 
 
 const autoprefixerOptions = {
@@ -87,6 +89,13 @@ gulp.task('watch', function () {
    gulp.watch('./app/**/*.js', ['bundle']);
 });
 
-gulp.task('default', ['connect', 'watch', 'bundle']);
+gulp.task('dotenv', function() {
+    return gulp.src('.env')
+      .pipe(dotenv())
+      .pipe(rename('env.json'))
+      .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', ['connect', 'watch', 'bundle', 'dotenv']);
 
 

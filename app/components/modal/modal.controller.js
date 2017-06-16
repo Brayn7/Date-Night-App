@@ -3,9 +3,9 @@ class modalController {
       let ctrl = this; 
       ctrl.$rootScope = $rootScope; 
       console.log(ctrl.$rootScope);
-      ctrl.$rootScope.zipcode;    
-   }
+      ctrl.$rootScope.zipcode; 
 
+   }
 
   zipSubmit(){
    	let ctrl= this; 
