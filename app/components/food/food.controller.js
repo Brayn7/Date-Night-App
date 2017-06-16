@@ -8,16 +8,16 @@ class foodController {
         ctrl.$rootScope = $rootScope;
         console.log(ctrl.$rootScope);
 
-        // ctrl.$rootScope.$watch('zipcode', (() => {
-        //     ctrl.zipcode = ctrl.$rootScope.zipcode;
-        //     ctrl.call(ctrl.zipcode, dotenv.DB_USER, dotenv.DB_PASS);
-        // }));
+        ctrl.$rootScope.$watch('zipcode', (() => {
+            ctrl.zipcode = ctrl.$rootScope.zipcode;
+            ctrl.call(ctrl.zipcode, dotenv.DB_USER, dotenv.DB_PASS, ctrl.$rootScope.area);
+        }));
 
         // local vars
         // ajax call to foursquare
-        ctrl.call = function(zip, user, pass) {
+        ctrl.call = function(zip, user, pass, distance) {
             $http({
-                url: 'https://api.foursquare.com/v2/venues/explore?near=' + zip + '&radius=800&query=food&client_id=' + user + '&client_secret=' + pass + '&v=20170616',
+                url: 'https://api.foursquare.com/v2/venues/explore?near=' + zip + '&radius=' + distance + '&query=food&client_id=' + user + '&client_secret=' + pass + '&v=20170616',
                 method: "GET",
                 data: {
                     param1: 'value1'
@@ -26,7 +26,7 @@ class foodController {
                 ctrl.restaurants.push(data.data.response.groups[0].items);
             });
         };
-        ctrl.call(40390, dotenv.DB_USER, dotenv.DB_PASS);
+      //  ctrl.call(40390, dotenv.DB_USER, dotenv.DB_PASS);
     };
 
     sharedFn (e) {

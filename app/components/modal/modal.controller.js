@@ -2,9 +2,10 @@ class modalController {
    constructor ($rootScope){
       let ctrl = this; 
       ctrl.$rootScope = $rootScope; 
-      console.log(ctrl.$rootScope);
+    
       ctrl.$rootScope.zipcode; 
-
+      ctrl.$rootScope.area = ""; 
+      console.log(ctrl.$rootScope.area);
    }
 
   zipSubmit(){
