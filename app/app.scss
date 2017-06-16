@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300i,400,900');
 
 $title-font: 'Montserrat', sans-serif;
 
@@ -8,12 +8,14 @@ $icon-colors: #374a5c;
 body {
    margin: 0; 
    height: 100%; 
-   overflow: hidden
+   // overflow: hidden;
+   font-family: $title-font;
 }
 
 .title, h1 {
    font-size: 2.4em;
    font-family: $title-font;
+   font-weight: 900;
    text-transform: uppercase;
 }
 
@@ -24,7 +26,6 @@ body {
 
 .category {
    
-
    a {
       display: table-cell;
       vertical-align: middle;
@@ -45,4 +46,34 @@ body {
       vertical-align: sub;
       letter-spacing: 2px;
    }
+}
+
+.dataList {
+   h2 {
+      font-family: $title-font;
+      font-weight: 900;
+      color: #db5f4a;
+   }
+   
+   address, li, a {
+      font-weight: 400;
+      color: #374a5c;
+   }
+
+   li {
+      font-size: .9em;
+      font-style: italic;
+      font-weight: 300;
+   }
+
+   li:after {
+      content: '|';
+      padding-left: 10px;
+   }
+
+   li:last-child:after{
+      content: none;
+   }
+
+
 }

@@ -1,44 +1,39 @@
 import dotenv from '../../../dist/env.json';
+import sharedFn from '../../sharedFn';
 class foodController {
-    constructor($rootScope) {
+    constructor($rootScope, $http) {
         let ctrl = this;
         // $rootscope vars
+        ctrl.restaurants = [];
         ctrl.$rootScope = $rootScope;
+        console.log(ctrl.$rootScope);
 
-        ctrl.$rootScope.$watch('zipcode', (() => {
-            ctrl.zipcode = ctrl.$rootScope.zipcode;
-            ctrl.call(ctrl.zipcode, dotenv.DB_USER, dotenv.DB_PASS);
-        }));
+        // ctrl.$rootScope.$watch('zipcode', (() => {
+        //     ctrl.zipcode = ctrl.$rootScope.zipcode;
+        //     ctrl.call(ctrl.zipcode, dotenv.DB_USER, dotenv.DB_PASS);
+        // }));
 
         // local vars
-        ctrl.restaurants;
-
         // ajax call to foursquare
-        ctrl.call = function (zip, user, pass) {
-           $.ajax({
-            url: 'https://api.foursquare.com/v2/venues/explore?near=' + zip + '&radius=800&query=food&client_id='+ user +'&client_secret=' + pass + '&v=20170616',
-            type: 'GET',
-            dataType: 'json',
-            data: {param1: 'value1'},
-         })
-         .done(function() {
-            console.log("success");
-         })
-         .fail(function() {
-            console.log("error");
-         })
-         .always(function(response) {
-            console.log(response.response.groups[0].items);
-         }).then(function(res){
-            ctrl.restaurants = res.response.groups[0].items;
-            console.log(ctrl.restaurants);
-         });
-        }
-         
-         
-         
+        ctrl.call = function(zip, user, pass) {
+            $http({
+                url: 'https://api.foursquare.com/v2/venues/explore?near=' + zip + '&radius=800&query=food&client_id=' + user + '&client_secret=' + pass + '&v=20170616',
+                method: "GET",
+                data: {
+                    param1: 'value1'
+                }
+            }).then(function(data) {
+                ctrl.restaurants.push(data.data.response.groups[0].items);
+            });
+        };
+        ctrl.call(40390, dotenv.DB_USER, dotenv.DB_PASS);
     };
 
+    sharedFn (e) {
+      let ctrl = this;  
+      ctrl.$rootScope.currMenuItem = sharedFn(e);
+      console.log(ctrl.$rootScope.currMenuItem);
+    }
 
 }
 
