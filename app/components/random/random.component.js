@@ -4,7 +4,7 @@ import controller from './random.controller';
 let randomComponent = {
 	bindings: {},
 	template, 
-	controller,
+	controller: ["$rootScope", controller],
 	controllerAs: '$ctrl'
 }
 

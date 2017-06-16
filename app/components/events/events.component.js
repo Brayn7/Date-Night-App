@@ -4,7 +4,7 @@ import controller from './events.controller';
 let eventsComponent = {
    bindings: {},
    template,
-   controller,
+   controller: ['$rootScope', controller],
    controllerAs: '$ctrl'
 }
 

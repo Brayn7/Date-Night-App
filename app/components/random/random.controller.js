@@ -1,9 +1,18 @@
+import sharedFn from '../../sharedFn';
+class randomController {
+    constructor($rootScope) {
+        let ctrl = this;
+        ctrl.$rootScope = $rootScope;
+    };
 
-class randomController{
-constructor(){
-	let ctrl = this; 
-	};
-
+    sharedFn(e) {
+        let ctrl = this;
+        if (ctrl.$rootScope.currMenuItem === undefined) {
+            ctrl.$rootScope.currMenuItem = sharedFn(e);
+        } else {
+            ctrl.$rootScope.currMenuItem = undefined;
+        }
+    }
 }
 
 export default randomController;

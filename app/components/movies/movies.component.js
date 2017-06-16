@@ -4,7 +4,7 @@ import controller from './movies.controller';
 let moviesComponent = {
    bindings: {},
    template,
-   controller,
+   controller: ["$rootScope", controller],
    controllerAs: '$ctrl'
 }
 

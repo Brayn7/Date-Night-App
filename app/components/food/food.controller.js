@@ -30,9 +30,12 @@ class foodController {
     };
 
     sharedFn (e) {
-      let ctrl = this;  
-      ctrl.$rootScope.currMenuItem = sharedFn(e);
-      console.log(ctrl.$rootScope.currMenuItem);
+      let ctrl = this;
+      if (ctrl.$rootScope.currMenuItem === undefined){
+        ctrl.$rootScope.currMenuItem = sharedFn(e);
+      } else {
+        ctrl.$rootScope.currMenuItem = undefined;
+      }
     }
 
 }

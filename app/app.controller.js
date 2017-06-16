@@ -14,7 +14,7 @@ class appController {
         // functions 
         $('#myModal').modal('show');
     };
-
+    
 
 }
 export default appController;

@@ -1,8 +1,8 @@
 <!-- <modal class="row"></modal> -->
 <navbar class="row"></navbar>
-<food ng-click='$ctrl.sharedFn($event)' class="row category" ></food>
-<events class="row category"></events>
-<movies class="row category"></movies>
-<random class="row category" ></random>
+<food ng-hide='$ctrl.$rootScope.currMenuItem !== undefined && $ctrl.$rootScope.currMenuItem !== "food"' class="row category" ></food>
+<events ng-hide='$ctrl.$rootScope.currMenuItem !== undefined && $ctrl.$rootScope.currMenuItem !== "events"' class="row category"></events>
+<movies ng-hide='$ctrl.$rootScope.currMenuItem !== undefined && $ctrl.$rootScope.currMenuItem !== "movies"' class="row category"></movies>
+<random ng-hide='$ctrl.$rootScope.currMenuItem !== undefined && $ctrl.$rootScope.currMenuItem !== "random"' class="row category" ></random>
 
 
